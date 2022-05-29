@@ -1,0 +1,36 @@
+import bicis.*
+import accesorios.*
+import deposito.*
+
+describe "Test Deposito"{
+	var dep1 = new Deposito()
+	var bici1 = new Bicicleta(rodado=26, largo=130, marca="Olmo")
+	var bici2 = new Bicicleta(rodado=30, largo=200, marca="Legnano")
+	
+	
+	method initialize(){
+		bici1.agregarAcc(farolito)
+		bici2.agregarAcc(new Canasto(volumen=3))
+		bici3.agregarAcc(new Morral(largo= 30, ojoDeGato=true))
+		dep1.agregarBicis(bici1)
+		
+		
+	}
+	
+	 
+	test "Deposito tiene luz"{
+		assert.that(dep1.depositoNocturno())
+		
+	}
+	
+	test "Deposito tiene bicicleta para llegar una carga"{
+		assert.that(dep1.tieneBicicletaCarga(-10))
+	}
+	
+	test "Carga total de las bicis largas"{
+		dep1.agregarBicis(bici2)
+		assert.equals(3*2, dep1.cargaTotalBicisLargas())
+	}
+	
+	
+}

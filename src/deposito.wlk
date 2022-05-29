@@ -6,11 +6,14 @@ class Deposito{
 	var bicis = []
 	
 	method agregarBicis(bici) = bicis.add(bici)
+	method quitarBicis(bici) = bicis.remove(bici)
 	
+	method bicisRapidas() = bicis.filter({ b => b.velocidadCrucero() > 25})
 	
-	method bicisMasRapidas() = bicis.filter({ b => b.velocidadCrucero() > 25})
 	method marcaDeBici() = bicis.asSet({b => b.marca()})
-	method depositoNocturno() = if(bicis.tieneLuz()) true  else{false}
+	
+	method depositoNocturno() = bicis.all({b=> b.tieneLuz()})
+	 
 	method tieneBicicletaCarga(cargaKg) = bicis.any({b => b.carga() > cargaKg}) 
 	
 	//Del punto 3
@@ -21,6 +24,10 @@ class Deposito{
 																
 	method cargaTotalBicisLargas() = self.bicisLargas().sum( {b => b.carga() } )//lo agrego aca, y pongo
 													//que sumen las cargas
+	
+	//method cantBicisSinAcces()
+	
+	
 	
 	
 	

@@ -1,0 +1,33 @@
+import bicis.*
+import accesorios.*
+import deposito.*
+
+describe "Bicis"{
+	var bici1 = new Bicicleta(rodado=26, largo=130, marca="Olmo")
+	
+	method initialize(){
+		bici1.agregarAcc(farolito)
+	}
+	
+	test "Probando altura"{
+		assert.equals(26*2.5+15, bici1.altura())
+	}
+	
+	test "Probando velocidad de crucero"{
+		assert.equals(26+6, bici1.velocidadCrucero())
+	}
+	
+	test "Probando carga"{
+		
+		assert.equals(0, bici1.carga())
+	}
+	
+	test "Peso"{
+		assert.equals(26/2 + 0.5, bici1.peso())
+	}
+	
+	test "Tiene Luz"{
+		assert.that(bici1.tieneLuz())
+	}
+	
+}
