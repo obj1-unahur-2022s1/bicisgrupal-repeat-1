@@ -27,5 +27,9 @@ class Morral {
 	method largo()=largo
 	method ojoDeGato()=ojoDeGato
 	
-	
 }
+
+/* Creariamos una nueva clase llamada accesorios, que contenga los atributos 
+  y metodos que poseen en comun todos los accesorios para mantener el polimorfismo, 
+  lo que facilitaria la escalabilidad */
+

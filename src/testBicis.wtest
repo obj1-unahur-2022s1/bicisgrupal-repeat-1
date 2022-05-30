@@ -1,9 +1,10 @@
 import bicis.*
 import accesorios.*
 import deposito.*
+import marcas.*
 
 describe "Bicis"{
-	var bici1 = new Bicicleta(rodado=26, largo=130, marca="Olmo")
+	var bici1 = new Bicicleta(rodado=26, largo=130, marca=Olmo)
 	
 	method initialize(){
 		bici1.agregarAcc(farolito)
@@ -28,6 +29,10 @@ describe "Bicis"{
 	
 	test "Tiene Luz"{
 		assert.that(bici1.tieneLuz())
+	}
+	
+	test "cantidad de accesorios livianos"{
+		assert.equals(1,bici1.cantDeAccLivianos())
 	}
 	
 }

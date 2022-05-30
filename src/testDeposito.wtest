@@ -1,17 +1,21 @@
 import bicis.*
 import accesorios.*
 import deposito.*
+import marcas.*
 
 describe "Test Deposito"{
 	var dep1 = new Deposito()
-	var bici1 = new Bicicleta(rodado=26, largo=130, marca="Olmo")
-	var bici2 = new Bicicleta(rodado=30, largo=200, marca="Legnano")
+	var bici1 = new Bicicleta(rodado=26, largo=130, marca=Olmo)
+	var bici2 = new Bicicleta(rodado=30, largo=200, marca=Legnano)
+	var bici3 = new Bicicleta(rodado=28, largo=170, marca=Carrefour)
+	var bici4 = new Bicicleta(largo=190,marca=Legnano,rodado=21)
+	
+	
 	
 	
 	method initialize(){
 		bici1.agregarAcc(farolito)
 		bici2.agregarAcc(new Canasto(volumen=3))
-		bici3.agregarAcc(new Morral(largo= 30, ojoDeGato=true))
 		dep1.agregarBicis(bici1)
 		
 		
@@ -32,5 +36,15 @@ describe "Test Deposito"{
 		assert.equals(3*2, dep1.cargaTotalBicisLargas())
 	}
 	
+	test "Cantidad de Bicicletas sin accesorios"{
+		dep1.agregarBicis(bici3)
+		assert.equals(1,dep1.cantBicisSinAcces())
+	}
+	
+	test "Bici2 y Bici4 son compañeras, Bici4 no es compañera de si misma"{
+		dep1.agregarBicis(bici4)
+		dep1.agregarBicis(bici2)
+		assert.equals([bici2],dep1.bicisCompanieras(bici4))
+	}
 	
 }

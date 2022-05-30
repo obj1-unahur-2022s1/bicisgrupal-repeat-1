@@ -1,4 +1,5 @@
 import accesorios.*
+import marcas.*
 
 class Bicicleta {
 	var property rodado
@@ -15,4 +16,12 @@ class Bicicleta {
 	method peso()=(rodado/2)+ accesorios.sum( {acc => acc.peso()})
 	method tieneLuz(){return accesorios.any( {acc => acc.esLuminoso()} )}
 	method cantDeAccLivianos(){return accesorios.filter({acc => acc.peso()<1}).size()}
+	
+	method tieneAcc(){return not(accesorios.isEmpty())}
+	
+	method sonCompanieras(biciAComparar){
+			return 	(self != biciAComparar) and
+					(self.marca() == biciAComparar.marca() and
+					(self.largo() - biciAComparar.largo()).between(-10,10))
+		}
 }
